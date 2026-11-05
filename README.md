@@ -14,7 +14,7 @@
 - Mourya G N (261AI040)
 - Srujan Soraganvi (261AI060)
 
-> The formatted report with figures, certificate, declaration and acknowledgement pages is in `README_Pixel.pdf`. This file holds the same content as plain Markdown (figures are in the PDF).
+> The formatted report with figures, certificate, declaration and acknowledgement pages is in `Abstract.pdf`. This file holds the same content as plain Markdown (figures are in the PDF).
 
 ## Abstract
 
@@ -165,7 +165,7 @@ r_XY = Cov(X, Y) / (sigma_X * sigma_Y)
 | Wind speed | 0.00 | -0.01 | 0.01 | 1.00 | 0.00 |
 | Avg past | 0.32 | 0.00 | 0.01 | 0.00 | 1.00 |
 
-*Figure 3.1: Pearson correlation heatmap. (chart in README_Pixel.pdf)*
+*Figure 3.1: Pearson correlation heatmap. (chart in Abstract.pdf)*
 
 **Avg_Past_Consumption is the only meaningful relationship (r = 0.32).** With |r| < 0.01, temperature, humidity and wind speed are essentially uncorrelated with consumption, so the weather columns carry little predictive signal in this dataset.
 
@@ -173,7 +173,7 @@ r_XY = Cov(X, Y) / (sigma_X * sigma_Y)
 
 ### 4.1 System Workflow
 
-*Figure 4.1: System workflow from data collection to interpretation. (chart in README_Pixel.pdf)*
+*Figure 4.1: System workflow from data collection to interpretation. (chart in Abstract.pdf)*
 
 1. **Data collection:** smart-meter CSV with 5,000 half-hourly rows.
 2. **Data preprocessing:** sort, de-duplicate, interpolate and add time features.
@@ -272,9 +272,9 @@ Consumption is nearly flat. Hourly means range from 0.357 to 0.398, weekday mean
 
 ### 6.2 Data Visualization
 
-*Figure 6.1: Average consumption by hour of day. (chart in README_Pixel.pdf)*
+*Figure 6.1: Average consumption by hour of day. (chart in Abstract.pdf)*
 
-*Figure 6.2: Monthly mean consumption (2024). (chart in README_Pixel.pdf)*
+*Figure 6.2: Monthly mean consumption (2024). (chart in Abstract.pdf)*
 
 Both charts start at zero on purpose, so the flat profile is shown at its true scale.
 
@@ -301,13 +301,13 @@ F1-score  = 2 * Precision * Recall / (Precision + Recall)
 | Random Forest | 0.117 | 0.145 | 0.195 |
 | Gradient Boosting | 0.116 | 0.143 | 0.217 |
 
-*Figure 6.3: Test RMSE by model (lower is better). (chart in README_Pixel.pdf)*
+*Figure 6.3: Test RMSE by model (lower is better). (chart in Abstract.pdf)*
 
 > **Linear Regression is best:** R² = 0.24 and RMSE 13% lower than the mean baseline. More complex models do not help because the signal is weak.
 
 **Feature importance.** About 52% of the Random Forest importance comes from Avg_Past_Consumption (0.31) and Roll_Mean_6 (0.22). Temperature, humidity and wind speed contribute about 7% each, a small share spread over noisy inputs. IsWeekend contributes about 0.3%, so weekends do not change consumption here. Weather importance does not imply signal, because the correlations were near zero.
 
-*Figure 6.4: Random Forest feature importance. (chart in README_Pixel.pdf)*
+*Figure 6.4: Random Forest feature importance. (chart in Abstract.pdf)*
 
 **Time-series forecasting.** The last 7 days (336 readings) were forecast with two baselines.
 
@@ -318,7 +318,7 @@ F1-score  = 2 * Precision * Recall / (Precision + Recall)
 | Mean baseline | 0.130 | 0.163 |
 | Naive (yesterday) | 0.188 | 0.233 |
 
-*Figure 6.5: Forecast error of the two baselines. (chart in README_Pixel.pdf)*
+*Figure 6.5: Forecast error of the two baselines. (chart in Abstract.pdf)*
 
 Yesterday is a poor forecast: RMSE rises from 0.163 (mean) to 0.233 when we repeat the same time yesterday. Consecutive days are almost independent, matching the flat hourly profile. ARIMA(2,0,1) and seasonal decomposition are implemented in the notebook (they require statsmodels) but their results are not reported here.
 
